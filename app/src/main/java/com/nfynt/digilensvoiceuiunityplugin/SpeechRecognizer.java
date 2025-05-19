@@ -5,6 +5,7 @@ package com.nfynt.digilensvoiceuiunityplugin;
  * Copyright (c) 2025 . All rights reserved.
  */
 
+import com.unity3d.player.UnityPlayer;
 import com.digilens.digios_voiceui_api.VoiceUI_Interface;
 import com.digilens.digios_voiceui_api.utils.VoiceUI_Model;
 import com.digilens.digios_voiceui_api.utils.VoiceUICallback;
@@ -30,6 +31,8 @@ public class SpeechRecognizer {
 //  ENGLISH - "en"
 //  Español - "es"
     public static VoiceUI_Model voiceUI_model;
+
+    private static VoiceUI_Interface voiceUIInterface=null;
 
     static {
         try {
@@ -75,8 +78,19 @@ public class SpeechRecognizer {
 
     public static void StartVoiceRecognition() throws Exception {
         CreateTestListener();
-        VoiceUI_Interface voiceUIInterface = new VoiceUI_Interface();
+        voiceUIInterface = new VoiceUI_Interface();
         voiceUIInterface.add_model(voiceUI_model);
-        voiceUIInterface.start();
+        voiceUIInterface.start(UnityPlayer.currentActivity);
+        Log.d(LOG_TAG,"Successfully started voice recognition");
+    }
+
+    public static void StopVoiceRecognition(){
+        try {
+            voiceUIInterface.stop();
+            Log.d(LOG_TAG,"Successfully stopped voice recognition");
+        } catch (Exception exception) {
+            Log.d(LOG_TAG,exception.getMessage());
+            exception.printStackTrace();
+        }
     }
 }

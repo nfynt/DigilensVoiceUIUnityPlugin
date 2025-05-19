@@ -40,6 +40,7 @@ dependencies {
 //    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 //    implementation(mapOf("name" to "digios_voiceui_api_1_1_5", "ext"  to "aar"))
     implementation(files("libs/digios_voiceui_api_1_1_5.aar"))
+    compileOnly(files("libs/unity2022_classes.jar"))
     implementation(libs.appcompat)
     implementation(libs.material)
     androidTestImplementation(libs.espresso.core)
