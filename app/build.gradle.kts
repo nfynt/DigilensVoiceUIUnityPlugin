@@ -13,7 +13,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
 
@@ -49,5 +49,4 @@ dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     androidTestImplementation(libs.espresso.core)
-//    libs/digios_voiceui_api_1_1_5.aar
 }
