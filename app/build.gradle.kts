@@ -13,8 +13,12 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+
+        debug{
+            isMinifyEnabled = false
         }
     }
     compileOptions {
@@ -37,9 +41,10 @@ tasks.register<Copy>("exportAAR") {
 }
 
 dependencies {
-//    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+//    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar","*.aar"))))
 //    implementation(mapOf("name" to "digios_voiceui_api_1_1_5", "ext"  to "aar"))
-    implementation(files("libs/digios_voiceui_api_1_1_5.aar"))
+//    implementation(files("libs/digios_voiceui_api_1_1_5.aar"))
+    implementation(project(":digios_voiceui_api", configuration = "nfynt_config"))
     compileOnly(files("libs/unity2022_classes.jar"))
     implementation(libs.appcompat)
     implementation(libs.material)

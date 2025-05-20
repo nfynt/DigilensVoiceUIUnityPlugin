@@ -14,5 +14,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "DigilensVoiceUIUnityPlugin"
-include(":app")
+//include(":app")
+include(":app", ":digios_voiceui_api")
  
